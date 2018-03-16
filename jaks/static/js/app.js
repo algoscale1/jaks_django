@@ -44,8 +44,9 @@ $('.free-form').submit(function(e){
         url: '/api/save_package',
         data: $('.free-form').serialize(),
         success: function (data) {
-            $('.generated-id').val()
-            console.log(data)
+            var obj = JSON.parse(data);
+            window.location = "/api/api_generator?key="+obj.key
+            // console.log(obj.key)
         },
     });
 });

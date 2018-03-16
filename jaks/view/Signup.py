@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import random,string
 from django.http import HttpResponse, HttpResponseRedirect
 # from django.core.urlresolvers import reverse
 from django.views.generic import View
@@ -35,10 +36,10 @@ class Signup(View):
 
 class SavePackage(View):
     def post(self,request):
-        user= request["user_id"]
-        package_name = request["package_name"]
+        print("HIIIIIIIIIIIIIII")
+        user = request.POST["generated-id"]
+        package_name = request.POST["selected-package"]
         user = User.objects.get(id=user)
-        package_name= "Free"
         package_id = sql_service.get_package_id(package_name)
         print(package_id,"=============")
         sql_service.save_user_package(package_id,user)
@@ -46,7 +47,20 @@ class SavePackage(View):
         total_limits=0
         limit_used =0
         left_limit = 0
-        api_key = str(hexlify(os.urandom(16)))
+        api_key = self.random_string_generator()
         sql_service.save_buying_history(user,total_limits,limit_used,left_limit,api_key)
-        return HttpResponse(True)
+        print(api_key,"==========")
+        # return render(request, "api_generator.html", {"data":api_key})
+        return HttpResponse(json.dumps({"key":api_key}))
 
+
+    def random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
+        return ''.join(random.choice(chars) for _ in range(16))
+
+
+class ApiGenerator(View):
+    def get(self,request):
+        # print(key,"=====")
+        # print('xcgj,.'
+        key = request.GET['key']
+        return render(request, "signup/api_generator.html", {"data":key})

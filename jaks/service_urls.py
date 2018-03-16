@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^signup',Signup.Signup.as_view()),
     url(r'^login', Login.Login.as_view()),
     url(r'^save_userdata',Signup.Signup.as_view()),
-    url(r'^save_package',Signup.SavePackage.as_view())
+    url(r'^save_package',Signup.SavePackage.as_view()),
+    url(r'^api_generator/$',Signup.ApiGenerator.as_view())
 ]
