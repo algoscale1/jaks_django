@@ -17,6 +17,7 @@ def save_user_data(user_name,email,password,dob,gender):
         return False
 
 def get_package_id(package_name):
+    #Package(name="free",cost=0,limit=60,validity_in_months=6).save()
     package = Package.objects.get(name=package_name)
     return package
 
