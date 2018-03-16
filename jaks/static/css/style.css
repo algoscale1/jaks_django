@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+.m-15 {
+    margin: 15px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.m-t-15 {
+    margin-top: 15px;
+}
+
+.m-tb-75{
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
+
+.f-s-18 {
+    font-size: 18px;
+}
+
+.wrapper1 {
+    background: url("../images/pexels-photo-29781.png") no-repeat;
+    background-size: 100%;
+    height: 100%;
+    padding-bottom: 15px;
+    position: relative;
+}
+
+.wrapper2 {
+    margin-top: 75px;
+}
+
+.logo img{
+    width: 137.5px;
+}
+
+.sign-in {
+    border-bottom: 1px solid #78d2ff;
+    color: #78d2ff;
+    font-size: 14px;
+    font-family: "Lato",sans-serif;
+    padding-bottom: 10px;
+}
+
+.sign-in:hover {
+    color: #78d2ff;
+    text-decoration: none;
+}
+
+.heading {
+    color: white;
+    font-family: Raleway;
+    font-size: 70px;
+    font-weight: 300;
+}
+
+.heading strong {
+    color: rgb(51, 187, 255);
+}
+
+.file-selector {
+    position: relative;
+    width: 100%;
+}
+
+.upload-file {
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.upload-file + input[type=file] {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+@media (max-width: 992px) {
+    .heading {
+        display: none;
+    }
+}
+
+.m-tb-5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-box {
+    background-color: white;
+    box-shadow: 5px 10px 10px #000;
+    color:  #000;
+    margin: 0 auto;
+    padding: 10px 60px 30px;
+    width: 500px;
+
+}
+
+input.ng-invalid.ng-dirty {
+    border-bottom: 2px solid red;
+    transition: .5s;
+}
+
+input.ng-valid.ng-dirty {
+    border-bottom: 2px solid green;
+    transition: .5s;
+}
+
+.inp-txt-box {
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    margin-bottom: 5px;
+    padding: 10px 10px 10px 0;
+    width: 100%;
+}
+
+.inp-sub-box {
+    color: forestgreen;
+    font-size: 18px;
+    margin-bottom: 5px;
+    padding: 10px 10px 10px 0;
+    width: 100%;
+}
+
+.inp-sub-box:hover {
+    color: forestgreen;
+}
+
+.errors {
+    margin-bottom: 10px;
+}
+
+.btn-tran:hover {
+    background-color: forestgreen;
+    color: white;
+    transition: .5s;
+}
+
+.terms-and-cond {
+    padding: 10px 0;
+    margin-bottom: 5px;
+}
+
+.remb-me {
+    text-align: left;
+    padding: 10px 15px;
+}
+
+.remb-me + *{
+    text-align: right;
+    padding: 10px 15px;
+}
+
+.terms-and-cond input,
+.remb-me input {
+    vertical-align: top;
+}
+
+.sign-up-box,
+.log-in-box {
+    background-color: forestgreen;
+    box-shadow: 5px 10px 10px #000;
+    display: inline-block;
+    color: white;
+    padding: 15px 0;
+    width: 500px;
+}
+
+.sign-up-box:hover,
+.log-in-box:hover {
+    color: white;
+}
+
+.login-box,
+.signup-box {
+    background-color: lightgrey;
+    overflow-x: hidden;
+    height: 100vh
+}
+
+.package-btn {
+    width: 100%;
+}
+
+.package-list {
+    margin-top: 10px;
+}
