@@ -8,10 +8,10 @@ class UserProfile(models.Model):
     date_of_birth = models.DateField()
 
 class Package(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50,unique=True)
     limit = models.IntegerField(default=0)
     cost = models.IntegerField(default=0)
-    validity = models.DateField()
+    validity_in_months = models.IntegerField(default=0)
 
 class UserPackage(models.Model):
     user = models.ForeignKey(User,on_delete=models.PROTECT)
