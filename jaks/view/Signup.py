@@ -7,6 +7,7 @@ import datetime
 import os
 from binascii import hexlify
 from django.contrib.auth.models import User
+import json
 
 class Signup(View):
     def get(self,request):
@@ -19,8 +20,12 @@ class Signup(View):
         dob = request.POST["dob"]
         gender = request.POST["gender"]
         dob = datetime.datetime.now().date()
-        sql_service.save_user_data(user_name,email,password,dob,gender)
-        return HttpResponse(True)
+        res = sql_service.save_user_data(user_name,email,password,dob,gender)
+        if res:
+            data = {"flag":True,"id":res}
+        else:
+            data = {"flag":False,"msg":"ERROR,Save Again!!!"}
+        return HttpResponse(json.dumps(data))
 
 
 class SavePackage(View):
