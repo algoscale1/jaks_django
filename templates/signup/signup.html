@@ -36,8 +36,11 @@
                                 </ul>
                             </div>
                             <div class="package-btn text-center">
-                                <a href="http://localhost:8080/api_generate" class="btn btn-primary text-capitalize">sign
-                                    up</a>
+                                <form name="free-form" class="free-form" style="margin-bottom: 15px">
+                                    <input type="hidden" name="selected-package" class="selected-package" value="free" />
+                                    <input type="hidden" name="generated-id" class="generated-id" value="0"/>
+                                    <button type="submit" class="btn btn-primary text-capitalize api-key">sign up</button>
+                                </form>
                             </div>
                         </div>
                         <div class="col-md-6 packages disabled p-0">
@@ -55,8 +58,11 @@
                                 </ul>
                             </div>
                             <div class="package-btn text-center">
-                                <a href="/api/api_generate" class="btn btn-primary text-capitalize">sign
-                                    up</a>
+                                <form name="key-form" class="key-form" style="margin-bottom: 15px">
+                                    <input type="hidden" name="selected-package" class="selected-package" value="premiun" />
+                                    <input type="hidden" name="generated-id" class="generated-id"/>
+                                    <button type="submit" class="btn btn-primary text-capitalize api-key">sign up</button>
+                                </form>
                             </div>
                         </div>
                     </div>

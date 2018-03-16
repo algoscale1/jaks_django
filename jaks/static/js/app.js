@@ -6,7 +6,7 @@ $('.input-file').change(function(e){
 
 $('#myModal').blur(function(e){
     e.preventDefault();
-})
+});
 
 $('.packages.disabled .package-btn a').click(function(e){
     e.preventDefault();
@@ -21,6 +21,8 @@ $('.signin-form').submit(function(e){
         success: function (data) {
             var obj = JSON.parse(data);
             if(obj.flag === true){
+                console.log(obj.id);
+                $('.generated-id').val(obj.id);
                 $('#myModal').modal(
                     {
                         'backdrop': false,
@@ -31,6 +33,19 @@ $('.signin-form').submit(function(e){
             } else if(obj.flag === false) {
                 alert(obj.msg)
             }
+        },
+    });
+});
+
+$('.free-form').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '/api/save_package',
+        data: $('.free-form').serialize(),
+        success: function (data) {
+            $('.generated-id').val()
+            console.log(data)
         },
     });
 });
