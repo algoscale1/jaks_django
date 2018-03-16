@@ -6,34 +6,47 @@ from django.views.generic import View
 import os
 from django.core.files.base import ContentFile
 import json
+from jaks.services import sql_service
+
+
 class TextClassifier(View):
     def post(self,request):
         """
 
         :return:
         """
-        ff = request.FILES
+        images = request.FILES
 
-        if len(ff)==0:
+        if 'api_key' not in request.POST:
+            return  HttpResponse("{'status_code':400,'message':api_key must be in the request}")
+        key = request.POST["api_key"]
+        if sql_service.check_api_key_validity(key)=="True":
 
-            return HttpResponse("{'status':200,'message':'No file was sent'}")
+            sql_service.increase_hit_count(key)
+            if len(images)==0:
 
-        for fi in ff:
+                return HttpResponse("{'status':200,'message':'No file was sent'}")
 
-            full_filename = 'jaks/app/test/'+str(ff[fi])
+            for img in images:
 
-            fout = open(full_filename, 'wb+')
-            file_content = ContentFile(ff[fi].read() )
+                full_filename = 'jaks/app/test/'+str(images[img])
 
-
-            # Iterate through the chunks.
-            for chunk in file_content.chunks():
-                fout.write(chunk)
-            fout.close()
+                fout = open(full_filename, 'wb+')
+                file_content = ContentFile(images[img].read() )
 
 
+                # Iterate through the chunks.
+                for chunk in file_content.chunks():
+                    fout.write(chunk)
+                fout.close()
 
-        extracted_data = process_n_get_text()
 
-        return HttpResponse(json.dumps(extracted_data))
+
+            extracted_data = process_n_get_text()
+
+
+            return HttpResponse(json.dumps(extracted_data))
+
+        else:
+            return HttpResponse("{'status_code':401,'message':Invalid api key}")
 

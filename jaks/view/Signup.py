@@ -30,7 +30,7 @@ class Signup(View):
             data = {"flag":True,"id":res.id}
         else:
             data = {"flag":False,"msg":"ERROR,Save Again!!!"}
-        print(data)
+        # print(data)
         return HttpResponse(json.dumps(data))
 
 
@@ -39,17 +39,18 @@ class SavePackage(View):
         print("HIIIIIIIIIIIIIII")
         user = request.POST["generated-id"]
         package_name = request.POST["selected-package"]
-        user = User.objects.get(id=user)
+        user= User.objects.get(id=user)
+        print(user, package_name)
         package_id = sql_service.get_package_id(package_name)
         print(package_id,"=============")
         sql_service.save_user_package(package_id,user)
 
-        total_limits=0
+        total_limits=60
         limit_used =0
         left_limit = 0
         api_key = self.random_string_generator()
         sql_service.save_buying_history(user,total_limits,limit_used,left_limit,api_key)
-        print(api_key,"==========")
+        # print(api_key,"==========")
         # return render(request, "api_generator.html", {"data":api_key})
         return HttpResponse(json.dumps({"key":api_key}))
 

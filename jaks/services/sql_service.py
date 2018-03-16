@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from jaks.models import UserProfile,Package,UserPackage,BuyingHistory
 import datetime
-
+from django.core.exceptions import ObjectDoesNotExist
 
 def save_user_data(user_name,email,password,dob,gender):
     try:
@@ -14,7 +14,6 @@ def save_user_data(user_name,email,password,dob,gender):
         print('Done')
         return user
     except Exception as e:
-        print(e,"+++++++++++++++++=")
         return False
 
 def get_package_id(package_name):
@@ -36,3 +35,30 @@ def save_buying_history(user,total_limits,limit_used,left_limit,api_key):
     print("SAVING BUYING HISTORY")
     BuyingHistory(user=user,total_limits=total_limits,limit_used=limit_used,left_active_limit=left_limit,api_key=api_key).save()
     print("Donee22222")
+
+
+def check_api_key_validity(key):
+    """
+
+    :param key:
+    :return:
+    """
+    try:
+        ff = BuyingHistory.objects.get(api_key=key)
+        if ff.limit_used ==ff.total_limits:
+            return "False"
+        ff.limit_used += 1
+        ff.save()
+    except ObjectDoesNotExist:
+        return "False"
+
+    return "True"
+
+
+def increase_hit_count(key):
+    """
+
+    :param key:
+    :return:
+    """
+
