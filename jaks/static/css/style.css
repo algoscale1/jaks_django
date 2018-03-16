@@ -11,6 +11,15 @@
     margin: 15px;
 }
 
+.p-0 {
+    padding: 0;
+}
+
+.p-tb-0 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .p-20 {
     padding: 20px;
 }
@@ -32,7 +41,7 @@
     font-size: 18px;
 }
 
-.wrapper1 {
+.index-wrapper1 {
     background: url("../images/pexels-photo-29781.png") no-repeat;
     background-size: 100%;
     height: 100%;
@@ -40,7 +49,7 @@
     position: relative;
 }
 
-.wrapper2 {
+.index-wrapper2 {
     margin-top: 75px;
 }
 
@@ -107,7 +116,7 @@
     background-color: white;
     box-shadow: 5px 10px 10px #000;
     color:  #000;
-    margin: 0 auto;
+    margin: 15px auto -5px;
     padding: 10px 60px 30px;
     width: 500px;
 
@@ -145,7 +154,8 @@ input.ng-valid.ng-dirty {
 }
 
 .errors {
-    margin-bottom: 10px;
+    color: red;
+    margin-bottom: 5px;
 }
 
 .btn-tran:hover {
@@ -156,7 +166,6 @@ input.ng-valid.ng-dirty {
 
 .terms-and-cond {
     padding: 10px 0;
-    margin-bottom: 5px;
 }
 
 .remb-me {
@@ -174,8 +183,8 @@ input.ng-valid.ng-dirty {
     vertical-align: top;
 }
 
-.sign-up-box,
-.log-in-box {
+.signin-box,
+.login-box {
     background-color: forestgreen;
     box-shadow: 5px 10px 10px #000;
     display: inline-block;
@@ -184,22 +193,116 @@ input.ng-valid.ng-dirty {
     width: 500px;
 }
 
-.sign-up-box:hover,
-.log-in-box:hover {
+.signin-box:hover,
+.login-box:hover {
     color: white;
 }
 
-.login-box,
-.signup-box {
+.login-wrapper,
+.signup-wrapper {
     background-color: lightgrey;
     overflow-x: hidden;
-    height: 100vh
+    height: 100vh;
 }
 
-.package-btn {
-    width: 100%;
+.package-modal {
+    background-color: rgba(0,0,0,.5);
+    padding-top: 150px;
+
+}
+
+.package-dialog {
+    width: 550px;
+}
+
+.package-body {
+    background-color: transparent;
+}
+
+.packages {
+    background-color: #f6f6f6;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+}
+
+.packages:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.package-btn a {
+    background-color: #78d2ff;
+    border: 1px solid #e1e1e1;
+    color: white;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+.packages.disabled:hover {
+    transform: none;
+}
+
+.packages.disabled,
+.packages.disabled .package-btn a {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.package-header {
+    background-color: #6772e5;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 0;
 }
 
 .package-list {
-    margin-top: 10px;
+    padding: 10px;
+}
+
+.package-list span {
+    color: red;
+}
+
+.package-list ul li {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 5px 0;
+}
+
+.api-gene-wrapper {
+    background: url("../images/pexels-photo-29781.png") no-repeat;
+    background-size: 100%;
+    height: 100vh;
+    padding-bottom: 15px;
+}
+
+.api-box {
+    margin-top: 50px;
+}
+
+.api-label h1 {
+    color: white;
+    font-family: Raleway;
+    font-size: 70px;
+    font-weight: 500;
+}
+
+.api-key input {
+    paddinG: 20px 20px 19px;
+}
+
+.api-btn {
+    margin-top: 20px;
+}
+
+.btn-tran:hover {
+    background-color: forestgreen;
+    color: white;
+    transition: .5s;
+}
+
+.not-matched {
+    border-bottom: 2px solid red !important;
+    transition: .5s;
 }

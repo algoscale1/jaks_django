@@ -11,20 +11,25 @@ import json
 
 class Signup(View):
     def get(self,request):
-        return render(request, 'signup.html')
+        return render(request, 'signup/signup.html')
 
     def post(self,request):
         user_name = request.POST["name"]
         email = request.POST["email"]
         password = request.POST["password"]
         dob = request.POST["dob"]
-        gender = request.POST["gender"]
+        gender_data = request.POST["gender"]
+        if gender_data == 'Male':
+            gender=0
+        else:
+            gender=1
         dob = datetime.datetime.now().date()
         res = sql_service.save_user_data(user_name,email,password,dob,gender)
         if res:
-            data = {"flag":True,"id":res}
+            data = {"flag":True,"id":res.id}
         else:
             data = {"flag":False,"msg":"ERROR,Save Again!!!"}
+        print(data)
         return HttpResponse(json.dumps(data))
 
 

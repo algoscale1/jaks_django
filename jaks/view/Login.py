@@ -3,5 +3,5 @@ from django.views.generic import View
 
 class Login(View):
     def get(self,request):
-        return render(request, 'login.html')
+        return render(request, 'login/login.html')
 
