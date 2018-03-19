@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,16 +17,28 @@
 <div class="login-wrapper">
     <div class="form-box text-center">
         <h2>Log In To Your Account</h2>
-        <form id="login-form" action="/api/index" name="user">
+        <form id="login-form" action="/api/userIndex" name="login_user" novalidate>
             <div class="row">
                 <div class="col-md-12">
-                    <input tabindex="1" class="inp-txt-box" name="email"
-                           type="email" placeholder="User Name" required autofocus/>
+                    <input tabindex="1" class="inp-txt-box" name="email" data-ng-pattern="/^([a-zA-Z0-9_\-\.]){2,}\@([a-zA-Z0-9]){2,}\.([a-zA-Z.]){2,}$/"
+                           data-ng-model="email" type="email" placeholder="User Name" required autofocus/>
+                </div>
+                <div class="col-md-12 text-right">
+                    <div class="errors" data-ng-show="login_user.email.$dirty && ( login_user.email.$invalid || login_user.email.$error.required )">
+                        This Email is not Valid.
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input tabindex="2" class="inp-txt-box" name="password" type="password" placeholder="Password" required/>
+                    <input tabindex="2" class="inp-txt-box" name="password" type="password" placeholder="Password"
+                            data-ng-minlength="5" data-ng-maxlength="10" data-ng-model="password" required/>
+                </div>
+
+                <div class="col-md-12 text-right">
+                    <div class="errors" data-ng-show="login_user.password.$dirty && login_user.password.$error.required">Required</div>
+                    <div class="errors" data-ng-show="login_user.password.$dirty && login_user.password.$error.minlength">Password is to Short.</div>
+                    <div class="errors" data-ng-show="login_user.password.$dirty && login_user.password.$error.maxlength">Now Password is too Long.</div>
                 </div>
             </div>
             <div class="row">
@@ -40,7 +52,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input tabindex="5" class="btn inp-sub-box login" name="submit" type="submit" value="Log In"/>
+                    <input tabindex="5" class="btn inp-sub-box login" name="submit" type="submit" value="Log In" 
+                           data-ng-class="{'btn-tran': !login_user.$pristine && login_user.$valid, 'disabled': login_user.$invalid}" 
+                           data-ng-disabled="login_user.$invalid"/>
                 </div>
             </div>
         </form>
@@ -54,10 +68,10 @@
 </div>
 <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
 <!--<script src="/static/bower_components/jquery-validation/dist/jquery-validate.min.js"></script>-->
-<!--<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>-->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/static/bower_components/angular/angular.min.js"></script>
-<script src="/static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!--<script src="/static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
 <script src="/static/js/app.js"></script>
 </body>
 </html>

@@ -36,14 +36,14 @@
                                 </ul>
                             </div>
                             <div class="package-btn text-center">
-                                <form name="free-form" class="free-form" style="margin-bottom: 15px">
+                                <form name="package-free" class="package-form m-b-15">
                                     <input type="hidden" name="selected-package" class="selected-package" value="free" />
                                     <input type="hidden" name="generated-id" class="generated-id" value="0"/>
-                                    <button type="submit" class="btn btn-primary text-capitalize api-key">sign up</button>
+                                    <button type="submit" class="btn btn-primary text-capitalize package-btn">sign up</button>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-6 packages disabled p-0">
+                        <div class="col-md-6 packages p-0">
                             <div class="package-header text-uppercase">
                                 premium
                             </div>
@@ -58,10 +58,10 @@
                                 </ul>
                             </div>
                             <div class="package-btn text-center">
-                                <form name="key-form" class="key-form" style="margin-bottom: 15px">
+                                <form name="package-premium" class="package-form m-b-15">
                                     <input type="hidden" name="selected-package" class="selected-package" value="premiun" />
-                                    <input type="hidden" name="generated-id" class="generated-id"/>
-                                    <button type="submit" class="btn btn-primary text-capitalize api-key">sign up</button>
+                                    <input type="hidden" name="generated-id" class="generated-id" value="0"/>
+                                    <button type="submit" class="btn btn-primary text-capitalize package-btn">sign up</button>
                                 </form>
                             </div>
                         </div>
@@ -103,16 +103,14 @@
                            data-ng-minlength="5" data-ng-maxlength="10" data-ng-model="signup.password" required/>
                 </div>
                 <div class="col-md-12 text-right">
-                    <div class="errors"
-                         data-ng-show="sign_up_user.password.$dirty && sign_up_user.password.$error.required">Required
+                    <div class="errors" data-ng-show="sign_up_user.password.$dirty && sign_up_user.password.$error.required">
+                        Required
                     </div>
-                    <div class="errors"
-                         data-ng-show="sign_up_user.password.$dirty && sign_up_user.password.$error.minlength">Password
-                        is to Short.
+                    <div class="errors" data-ng-show="sign_up_user.password.$dirty && sign_up_user.password.$error.minlength">
+                        Password is to Short.
                     </div>
-                    <div class="errors"
-                         data-ng-show="sign_up_user.password.$dirty && sign_up_user.password.$error.maxlength">Now
-                        Password is too Long.
+                    <div class="errors" data-ng-show="sign_up_user.password.$dirty && sign_up_user.password.$error.maxlength">
+                        Now Password is too Long.
                     </div>
                 </div>
             </div>
@@ -179,8 +177,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input id="signin-form" tabindex="9" class="btn inp-sub-box signin-btn" name="submit" type="submit"
-                           value="Sign Up"
+                    <input id="signin-form" tabindex="9" class="btn inp-sub-box signin-btn" name="submit" type="submit" value="Sign Up"
                            data-ng-class="{'btn-tran': !sign_up_user.$pristine && sign_up_user.$valid, 'disabled': sign_up_user.$invalid}"
                            data-ng-disabled="sign_up_user.$invalid"/>
                 </div>
@@ -198,8 +195,7 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/static/bower_components/angular/angular.min.js"></script>
-<script src="/static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!--<script src="/static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
 <script src="/static/js/app.js"></script>
-<!--<script src="/static/js/controllers/signUpController.js"></script>-->
 </body>
 </html>

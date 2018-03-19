@@ -32,6 +32,10 @@
     margin-top: 15px;
 }
 
+.m-b-15 {
+    margin-bottom: 15px;
+}
+
 .m-tb-75{
     margin-top: 75px;
     margin-bottom: 75px;
@@ -39,6 +43,10 @@
 
 .f-s-18 {
     font-size: 18px;
+}
+
+.cursor-p {
+    cursor: pointer;
 }
 
 .index-wrapper1 {
@@ -305,4 +313,53 @@ input.ng-valid.ng-dirty {
 .not-matched {
     border-bottom: 2px solid red !important;
     transition: .5s;
+}
+
+.user-modal {
+    margin-top: 15px;
+    position: relative;
+}
+
+.user-img {
+    position: absolute;
+    right: 0;
+}
+
+.user-img img {
+    width: 45px;
+}
+
+.user-options {
+    display: none;
+    width: 250px;
+}
+
+.options-tooltip {
+    color: rgb(51, 187, 255);
+    font-size: 18px;
+    position: absolute;
+    top: 42px;
+    right: 14px;
+}
+
+.user-options ul {
+    background-color: rgb(51, 187, 255);
+    border-radius: 5px;
+    padding: 15px 25px;
+    position: absolute;
+    top: 55px;
+    right: 5px;
+    z-index: 1000;
+}
+
+.user-options ul li {
+    margin: 5px 0;
+}
+
+.user-options ul li a {
+    color: white;
+}
+
+.user-options ul li a:hover {
+    text-decoration: none;
 }

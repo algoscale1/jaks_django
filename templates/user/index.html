@@ -21,9 +21,19 @@
                 <a title="Calculus, Chemistry, and so much more!" class="logo pull-left" href="https://jakstutors.com/"><img
                         alt="Calculus, Chemistry, and so much more!"
                         src="/static/images/23415950_1648217011896185_132545581_n.png"></a>
-                <a title="Sign In" class="sign-in pull-right m-15 text-uppercase" href>
-                    user
-                </a>
+                <div class="user-modal pull-right">
+                    <a class="user-img cursor-p">
+                        <img src="/static/images/user.jpeg" alt="User Image" class="img-circle">
+                    </a>
+                    <div class="user-options">
+                        <div class="options-tooltip glyphicon glyphicon-triangle-top"></div>
+                        <ul class="list-unstyled">
+                            <li><a class="cursor-p">Profile</a></li>
+                            <li><a class="cursor-p">Account Settings</a></li>
+                            <li><a class="cursor-p">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="m-tb-75">
                 <div class="row">
@@ -34,7 +44,7 @@
                         <form class="file-selector" action="http://54.237.222.120:8080/classify" method="POST"
                               enctype="multipart/form-data" target="_blank">
                             <input title="Upload here" placeholder="Upload here" name="inputText"
-                                   class="form-control input-model p-20 f-s-18 p-r-40" type="text"/>
+                                   class="form-control input-text p-20 f-s-18 p-r-40" type="text"/>
                             <label title="Add File" class="upload-file" for="upload-file">
                                 <span class="glyphicon glyphicon-file"></span>
                             </label>
@@ -58,10 +68,10 @@
 </div>
 <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
 <!--<script src="/static/bower_components/jquery-validation/dist/jquery-validate.min.js"></script>-->
-<!--<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>-->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/static/bower_components/angular/angular.min.js"></script>
-<script src="/static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="/static/js/app.js"></script>
+<!--<script src="/static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
+<script src="/static/js/user/app.js"></script>
 </body>
 </html>

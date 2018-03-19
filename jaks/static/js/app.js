@@ -1,7 +1,7 @@
-$('.input-file').change(function(e){
-    $('.input-model').val(e.target.files[0].name);
-    $('.file-selector').submit();
-    $('.input-model').val('');
+$('.input-file').click(function(e){
+    e.preventDefault();
+    alert('Please Login Before File Select');
+    window.location = "/api/login";
 });
 
 $('#myModal').blur(function(e){
@@ -37,35 +37,20 @@ $('.signin-form').submit(function(e){
     });
 });
 
-$('.free-form').submit(function(e){
-    e.preventDefault();
+$('.package-form').submit(function(e){
+    var jsonObj = JSON.parse(JSON.stringify($(this).serializeArray()));
+    var str = jsonObj[0].name+"="+jsonObj[0].value+"&"+jsonObj[1].name+"="+jsonObj[1].value;
     $.ajax({
         type: 'POST',
         url: '/api/save_package',
-        data: $('.free-form').serialize(),
+        data: str,
         success: function (data) {
             var obj = JSON.parse(data);
             window.location = "/api/api_generator?key="+obj.key
-            // console.log(obj.key)
         },
     });
 });
 
-//$('.signin-btn').click(function(){
-//    var form = $('.signin-form');
-//    if(form.valid()){
-//        console.log('form valid btn');
-//        $('#myModal').modal(
-//            {
-//                'backdrop': false,
-//                'show': true,
-//                'keyboard': false
-//            }
-//        );
-//    } else {
-//        console.log('form invalid btn')
-//    }
-//});
 
 $.validator.messages.required = '';
 
@@ -78,7 +63,7 @@ var myApp = angular.module('myApp',[]);
 //myApp.controller('baseController',['$scope',function($scope){
 //    $scope.title = "testing";
 //}]);
-//
+
 //myApp.config(function($stateProvider, $urlRouterProvider,$locationProvider) {
 //    $locationProvider.html5Mode(true);
 //    $urlRouterProvider.otherwise('/index');
