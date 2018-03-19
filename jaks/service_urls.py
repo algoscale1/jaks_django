@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^save_userdata',Signup.Signup.as_view()),
     url(r'^save_package',Signup.SavePackage.as_view()),
     url(r'^api_generator/$',Signup.ApiGenerator.as_view()),
-    url(r'^classify',TextClassifier.as_view(),name='classi')
+    url(r'^classify/(?P<api_key>\w{16})$',TextClassifier.as_view(),name='classi')
 ]
