@@ -24,8 +24,6 @@ class UserPackage(models.Model):
 class BuyingHistory(models.Model):
     user = models.ForeignKey(User,on_delete=models.PROTECT)
     total_limits = models.IntegerField()
-    limit_used = models.IntegerField()
-    left_active_limit = models.IntegerField()
     api_key = models.CharField(max_length=50)
 
 

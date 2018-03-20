@@ -32,10 +32,14 @@ def save_user_package(package_id,user_id):
 
 
 
-def save_buying_history(user,total_limits,limit_used,left_limit,api_key):
+def save_buying_history(user,total_limits,api_key):
     print("SAVING BUYING HISTORY")
-    BuyingHistory(user=user,total_limits=total_limits,limit_used=limit_used,left_active_limit=left_limit,api_key=api_key).save()
+    BuyingHistory(user=user,total_limits=total_limits,api_key=api_key).save()
     print("Donee22222")
+
+def get_api_key(user_id):
+    user = User.objects.get(id=user_id)
+    BuyingHistory.objets.get(user = user,total_limits__gt = 0)
 
 
 def check_api_key_validity(key):
@@ -45,10 +49,11 @@ def check_api_key_validity(key):
     :return:
     """
     try:
+        print("hereeeeeeeeeeeeeeeeee")
         ff = BuyingHistory.objects.get(api_key=key)
-        if ff.limit_used ==ff.total_limits:
+        if ff.total_limits == 0:
             return "False"
-        ff.limit_used += 1
+        ff.total_limits = ff.total_limits-1
         ff.save()
     except ObjectDoesNotExist:
         return "False"

@@ -36,22 +36,14 @@ class Signup(View):
 
 class SavePackage(View):
     def post(self,request):
-        print("HIIIIIIIIIIIIIII")
         user = request.POST["generated-id"]
         package_name = request.POST["selected-package"]
         user= User.objects.get(id=user)
-        print(user, package_name)
-        package_id = sql_service.get_package_id(package_name)
-        print(package_id,"=============")
+        package_id = sql_service.get_package_id(str(package_name).lower())
         sql_service.save_user_package(package_id,user)
-
-        total_limits=60
-        limit_used =0
-        left_limit = 0
+        total_limits=package_id.limit
         api_key = self.random_string_generator()
-        sql_service.save_buying_history(user,total_limits,limit_used,left_limit,api_key)
-        # print(api_key,"==========")
-        # return render(request, "api_generator.html", {"data":api_key})
+        sql_service.save_buying_history(user,total_limits,api_key)
         return HttpResponse(json.dumps({"key":api_key}))
 
 

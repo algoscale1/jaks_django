@@ -1,7 +1,7 @@
 $('.input-file').click(function(e){
     e.preventDefault();
     alert('Please Login Before File Select');
-    window.location = "/api/login";
+    window.location = "/api/subject/login";
 });
 
 $('#myModal').blur(function(e){

@@ -12,13 +12,19 @@ from jaks.services import sql_service
 class TextClassifier(View):
 
     @staticmethod
-    def post(request, api_key):
+    def post(request):
         """
 
         :param request:
         :param api_key:
         :return:
         """
+        if(request.GET['api_key'] is None):
+            # user_id = request.user
+            user_id = 1
+            api_key = sql_service.get_api_key(user_id)
+        else:
+            api_key = request.GET['api_key']
 
         images = request.FILES
 
@@ -26,8 +32,10 @@ class TextClassifier(View):
         #     return  HttpResponse("{'status_code':400,'message':api_key must be in the request}")
         # key = request.POST["api_key"]
         if sql_service.check_api_key_validity(api_key)=="True":
+            print("kkkkkkk")
+            exit()
 
-            sql_service.increase_hit_count(api_key)
+            # sql_service.increase_hit_count(api_key)
             if len(images)==0:
 
                 return HttpResponse("{'status':200,'message':'No file was sent'}")
@@ -45,6 +53,8 @@ class TextClassifier(View):
                 fout.close()
 
             extracted_data = process_n_get_text()
+
+            sql_service.increase_hit_count(api_key)
 
             return HttpResponse(json.dumps(extracted_data))
 
