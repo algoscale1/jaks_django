@@ -61,7 +61,7 @@ class ChColor:
             #print "pixel out of bounds ("+str(y)+","+str(x)+")"
             return 0
         pixel = self.img[yy][xx]
-        return 0.30 * pixel[2] + 0.59 * pixel[1] + 0.11 * pixel[0]
+        return 0.30 * pixel[2] + 0.79 * pixel[1] + 0.11 * pixel[0]
 
 
     # A quick test to check whether the contour is
