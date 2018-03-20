@@ -46,13 +46,9 @@ def process_n_get_text():
 
     :return:
     """
+    img_data = {}
     for the_file in os.listdir(folder):
         file_path = os.path.join(folder, the_file)
-        ch.load_image(file_path, the_file, new_folder)
-        os.unlink(file_path)
-    img_data = {}
-    for the_file in os.listdir(new_folder):
-        file_path = os.path.join(new_folder, the_file)
         data = pytesseract.image_to_string(Image.open(file_path))
         question = clean(data)
         predicted = predict([question])
