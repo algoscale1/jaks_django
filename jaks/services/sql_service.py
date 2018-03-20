@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 def save_user_data(user_name,email,password,dob,gender):
     try:
-        user = User(username=user_name,email=email,password=password)
+        user = User.objects.create_user(username=user_name,email=email,password=password)
         user.save()
         # user = User.objects.get(id=1)
         print(user, 'kkkkk')
@@ -38,8 +38,13 @@ def save_buying_history(user,total_limits,api_key):
     print("Donee22222")
 
 def get_api_key(user_id):
+    print("kkkkkk")
     user = User.objects.get(id=user_id)
-    BuyingHistory.objets.get(user = user,total_limits__gt = 0)
+    try:
+        buying_history = BuyingHistory.objects.get(user = user,total_limits__gt = 0)
+        return buying_history.api_key
+    except:
+        return False
 
 
 def check_api_key_validity(key):

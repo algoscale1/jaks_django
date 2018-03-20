@@ -19,10 +19,11 @@ class TextClassifier(View):
         :param api_key:
         :return:
         """
-        if(request.GET['api_key'] is None):
-            # user_id = request.user
-            user_id = 1
+        user_id = request.user.id
+        if(request.GET['api_key'] == "None"):
             api_key = sql_service.get_api_key(user_id)
+            if not api_key:
+                return HttpResponse("Please renew the api key")
         else:
             api_key = request.GET['api_key']
 
@@ -32,8 +33,6 @@ class TextClassifier(View):
         #     return  HttpResponse("{'status_code':400,'message':api_key must be in the request}")
         # key = request.POST["api_key"]
         if sql_service.check_api_key_validity(api_key)=="True":
-            print("kkkkkkk")
-            exit()
 
             # sql_service.increase_hit_count(api_key)
             if len(images)==0:
