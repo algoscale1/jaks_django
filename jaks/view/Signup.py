@@ -38,7 +38,9 @@ class SavePackage(View):
     def post(self,request):
         user = request.POST["generated-id"]
         package_name = request.POST["selected-package"]
+        print(package_name,11111111)
         user= User.objects.get(id=user)
+        print(user,2222222222)
         package_id = sql_service.get_package_id(str(package_name).lower())
         sql_service.save_user_package(package_id,user)
         total_limits=package_id.limit
