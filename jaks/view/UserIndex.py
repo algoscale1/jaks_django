@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 class UserIndex(View):
-    def get(self,request):
-        return render(request, 'user/index.html')
+    # def get(self,request):
+    #     return render(request, 'user/index.html')
 
     def post(self, request):
         print("HEREEEEE",request)

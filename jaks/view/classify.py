@@ -7,6 +7,7 @@ import os
 from django.core.files.base import ContentFile
 import json
 from jaks.services import sql_service
+from django.http import HttpResponseRedirect
 
 
 class TextClassifier(View):
@@ -20,6 +21,9 @@ class TextClassifier(View):
         :return:
         """
         user_id = request.user.id
+        print("userrrrrrrrr",user_id)
+        if user_id == None:
+            return HttpResponse('Kindly login first!!')
         if(request.GET['api_key'] == "None"):
             api_key = sql_service.get_api_key(user_id)
             if not api_key:
