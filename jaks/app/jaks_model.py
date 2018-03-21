@@ -22,6 +22,8 @@ from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from PIL import Image
+import cv2
 
 stop_words = set(stopwords.words('english'))
 import cv2
@@ -38,7 +40,7 @@ ch = ChColor()
 import os
 
 folder = "jaks/app/test"
-new_folder = "jaks/app/processed_images"
+new_folder = "jaks/app/processed_images/"
 
 
 def process_n_get_text():
@@ -49,12 +51,19 @@ def process_n_get_text():
     img_data = {}
     for the_file in os.listdir(folder):
         file_path = os.path.join(folder, the_file)
-        data = pytesseract.image_to_string(Image.open(file_path))
+        im = Image.open(file_path)
+        im = im.resize((1200,600))
+
+        im.save(new_folder+the_file, dpi=(550, 550))
+
+        data = pytesseract.image_to_string(Image.open(new_folder+the_file), lang='eng')
         question = clean(data)
         predicted = predict([question])
 
-        img_data.update({the_file:{"question":question,"subject": predicted}})
+        img_data.update({the_file:{"question":data,"subject": predicted}})
         os.unlink(file_path)
+        os.unlink(new_folder+the_file)
+
     return img_data
 
 
