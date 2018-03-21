@@ -19,6 +19,7 @@ class UserPackage(models.Model):
     package_get_date = models.DateField()
     package_end_date = models.DateField()
     status = models.IntegerField()
+    api_key = models.CharField(max_length=50)
 
 
 class BuyingHistory(models.Model):

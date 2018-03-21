@@ -21,13 +21,13 @@ def get_package_id(package_name):
     package = Package.objects.get(name=package_name)
     return package
 
-def save_user_package(package_id,user_id):
+def save_user_package(package_id,user_id,api_key):
     print("SAVING USER PACKAGE")
     package_get_date = datetime.datetime.now().date()
     package_end_date = datetime.datetime.now().date()
     status = 1
     UserPackage(user=user_id,pacakage=package_id,package_get_date=package_get_date,
-                package_end_date=package_end_date,status=status).save()
+                package_end_date=package_end_date,status=status,api_key=api_key).save()
     print("DONEEEE")
 
 

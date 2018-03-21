@@ -42,9 +42,9 @@ class SavePackage(View):
         user= User.objects.get(id=user)
         print(user,2222222222)
         package_id = sql_service.get_package_id(str(package_name).lower())
-        sql_service.save_user_package(package_id,user)
         total_limits=package_id.limit
         api_key = self.random_string_generator()
+        sql_service.save_user_package(package_id, user,api_key)
         sql_service.save_buying_history(user,total_limits,api_key)
         return HttpResponse(json.dumps({"key":api_key}))
 
