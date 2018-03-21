@@ -24,7 +24,11 @@ class TextClassifier(View):
         print("userrrrrrrrr",user_id)
         if user_id == None:
             return HttpResponse('Kindly login first!!')
-        if(request.GET['api_key'] == "None"):
+        try:
+           api_key = request.GET['api_key']
+        except:
+            api_key = None
+        if(api_key == None):
             api_key = sql_service.get_api_key(user_id)
             if not api_key:
                 return HttpResponse("Please renew the api key")
