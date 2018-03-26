@@ -113,10 +113,9 @@ def predict(questions):
     :param questions:
     :return:
     """
-    # clf_model = joblib.load('jaks/app/sub_clsfr.pickle')
-    # predictions = clf_model.predict(questions)
-    # return predictions
-    return "mathematics"
+    clf_model = joblib.load('jaks/app/sub_clsfr.pickle')
+    predictions = clf_model.predict(questions)
+    return predictions.tolist()[0]
 
 def get_string(img_path):
     # Read image with opencv
