@@ -42,13 +42,13 @@ class TextClassifier(View):
                 if sql_service.check_api_key_validity(api_key)=="True":
                     extracted_data = TextClassifier.find_subject(images)
                 else:
-                    return HttpResponse("{'status_code':401,'message':Invalid api key}")
+                    return HttpResponse("{'status_code':401,'message':'Invalid api key'}")
             else:
-                return HttpResponse("Please renew the api key")
+                return HttpResponse("{'status_code':401,'message':'Please renew the api key'}")
         elif len(api_key) >0 and len(api_key) !=16:
             return HttpResponse("Invalid api key")
         else:
-            return HttpResponse("Either login or api key is required to use this service.")
+            return HttpResponse("{'status_code':401,'message':'Either login or api key is required to use this service.'}")
 
         sql_service.increase_hit_count(api_key)
 
@@ -61,9 +61,6 @@ class TextClassifier(View):
         :param images:
         :return:
         """
-
-
-
         for img in images:
 
             full_filename = 'jaks/app/test/'+str(images[img])
