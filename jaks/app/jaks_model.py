@@ -39,7 +39,7 @@ ch = ChColor()
 
 import os
 
-folder = "jaks/app/test"
+folder = "jaks/app/test/"
 new_folder = "jaks/app/processed_images/"
 
 
