@@ -21,7 +21,6 @@ $('.signin-form').submit(function(e){
         success: function (data) {
             var obj = JSON.parse(data);
             if(obj.flag === true){
-                console.log(obj.id);
                 $('.generated-id').val(obj.id);
                 $('#myModal').modal(
                     {
@@ -51,13 +50,19 @@ $('.package-form').submit(function(e){
     });
 });
 
+$('.key-form').submit(function(e){
+    e.preventDefault();
+    var jsonObj = JSON.parse(JSON.stringify($(this).serializeArray()));
+    window.location = "/api/userIndex?key="+jsonObj[0].value;
+});
+
 
 $.validator.messages.required = '';
 
 var myApp = angular.module('myApp',[]);
 
 //myApp.config(function($interpolateProvider) {
-//    $interpolateProvider.startSymbol('//').endSymbol('//');
+//    $interp-olateProvider.startSymbol('//').endSymbol('//');
 //});
 
 //myApp.controller('baseController',['$scope',function($scope){
