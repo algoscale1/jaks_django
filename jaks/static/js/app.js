@@ -1,7 +1,7 @@
 $('.input-file').click(function(e){
     e.preventDefault();
     alert('Please Login Before File Select');
-    window.location = "/api/login";
+    window.location = "/api/subject/login";
 });
 
 $('#myModal').blur(function(e){
@@ -16,7 +16,7 @@ $('.signin-form').submit(function(e){
     e.preventDefault();
     $.ajax({
         type: 'POST',
-        url: '/api/save_userdata',
+        url: '/api/subject/save_userdata',
         data: $('.signin-form').serialize(),
         success: function (data) {
             var obj = JSON.parse(data);
@@ -41,11 +41,11 @@ $('.package-form').submit(function(e){
     var str = jsonObj[0].name+"="+jsonObj[0].value+"&"+jsonObj[1].name+"="+jsonObj[1].value;
     $.ajax({
         type: 'POST',
-        url: '/api/save_package',
+        url: '/api/subject/save_package',
         data: str,
         success: function (data) {
             var obj = JSON.parse(data);
-            window.location = "/api/api_generator?key="+obj.key
+            window.location = "/api/subject/api_generator?key="+obj.key
         },
     });
 });

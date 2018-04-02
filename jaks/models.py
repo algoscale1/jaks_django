@@ -19,13 +19,12 @@ class UserPackage(models.Model):
     package_get_date = models.DateField()
     package_end_date = models.DateField()
     status = models.IntegerField()
+    api_key = models.CharField(max_length=50)
 
 
 class BuyingHistory(models.Model):
     user = models.ForeignKey(User,on_delete=models.PROTECT)
     total_limits = models.IntegerField()
-    limit_used = models.IntegerField()
-    left_active_limit = models.IntegerField()
     api_key = models.CharField(max_length=50)
 
 

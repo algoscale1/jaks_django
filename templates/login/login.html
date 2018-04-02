@@ -17,16 +17,16 @@
 <div class="login-wrapper">
     <div class="form-box text-center">
         <h2>Log In To Your Account</h2>
-        <form id="login-form" action="/api/userIndex" name="login_user" novalidate>
+        <form id="login-form" action="/api/subject/userIndex" name="login_user" method="post" novalidate>
             <div class="row">
                 <div class="col-md-12">
-                    <input tabindex="1" class="inp-txt-box" name="email" type="email" placeholder="User Name" required autofocus/>
+                    <input tabindex="1" class="inp-txt-box" name="user_name"
+                           type="email" placeholder="User Name" required autofocus/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input tabindex="2" class="inp-txt-box" name="password" type="password" placeholder="Password"
-                            data-ng-minlength="5" data-ng-maxlength="10" data-ng-model="password" required/>
+                    <input tabindex="2" class="inp-txt-box" name="password" type="password" placeholder="Password" required/>
                 </div>
             </div>
             <div class="row">
@@ -40,14 +40,14 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input tabindex="5" class="btn inp-sub-box login" name="submit" type="submit" value="Log In" />
+                    <input tabindex="5" class="btn inp-sub-box login" name="submit" type="submit" value="Log In"/>
                 </div>
             </div>
         </form>
     </div>
     <div class="row text-center">
         <div class="col-md-12">
-            <a tabindex="6" class="signin-box" href="/api/signup">If Not An User? <b>Sign
+            <a tabindex="6" class="signin-box" href="/api/subject/signup">If Not An User? <b>Sign
                 Up</b></a>
         </div>
     </div>
